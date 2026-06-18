@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrollRunner Garden Log 🌱 | The 8-Bit Garden Journal</title>
+  <meta name="description" content="A cozy 8-bit pixel-art garden diary — plants, progress, tips, memes, and the journey from seed to harvest. Part of the TrollRunner.net world.">
+  <meta name="theme-color" content="#1b5e20">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="TrollRunner Garden Log — The 8-Bit Garden Journal">
+  <meta property="og:description" content="A cozy pixel garden world: plant gallery, growth timelines, gardening tips, meme corner & harvest tracker.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://garden.trollrunner.net">
+  <meta property="og:image" content="https://garden.trollrunner.net/images/thumbs/roses.jpeg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===================== START SCREEN ===================== -->
+  <div id="start-screen">
+    <div class="sky-deco">
+      <div class="sun"></div>
+      <div class="cloud c1"></div>
+      <div class="cloud c2"></div>
+      <div class="cloud c3"></div>
+    </div>
+    <img class="mascot" src="mascot.svg" alt="Pixel troll farmer mascot">
+    <h1 class="start-title">TrollRunner<br>Garden Log</h1>
+    <p class="start-sub">A cozy 8-bit garden diary — plants, experiments, gardening wins, gardening Ls, tips &amp; memes. From seed to harvest. 🌱</p>
+    <button id="start-btn" class="btn green press-start">▶ Press Start to Enter the Garden</button>
+  </div>
+
+  <!-- ===================== TOP NAV ===================== -->
+  <header id="topbar">
+    <a class="brand" href="#home" data-view="view-home">
+      <img class="mascot small" src="mascot.svg" alt="">
+      <span>GARDEN LOG</span>
+    </a>
+    <nav>
+      <a class="navlink active" data-view="view-home">Home</a>
+      <a class="navlink" data-view="view-journal">Journal</a>
+      <a class="navlink" data-view="view-gallery">Gallery</a>
+      <a class="navlink" data-view="view-timelines">Timelines</a>
+      <a class="navlink" data-view="view-tips">Tips</a>
+      <a class="navlink" data-view="view-memes">Memes</a>
+      <a class="navlink" data-view="view-map">Garden Map</a>
+      <a class="navlink" data-view="view-seasons">Seasons</a>
+      <a class="navlink" data-view="view-harvest">Harvest</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== HOME ===================== -->
+    <section id="view-home" class="view active">
+      <div class="hero panel">
+        <div class="sky-deco">
+          <div class="sun"></div>
+          <div class="cloud c1"></div>
+          <div class="cloud c3"></div>
+        </div>
+        <img class="mascot" src="mascot.svg" alt="Pixel troll farmer mascot">
+        <h1>Welcome to the TrollRunner Garden Log</h1>
+        <p class="tag">A cozy 8-bit garden diary where I document my plants, experiments, gardening wins, gardening Ls, tips, memes, and the whole journey from seed to harvest. Grab a watering can and explore the pixel garden. 🌻</p>
+        <div class="quick-links">
+          <a class="btn green" data-view="view-journal">📓 Garden Journal</a>
+          <a class="btn" data-view="view-gallery">🖼️ Plant Gallery</a>
+          <a class="btn" data-view="view-tips">💡 Tips</a>
+          <a class="btn" data-view="view-memes">😈 Meme Corner</a>
+          <a class="btn" data-view="view-harvest">📊 Harvest Tracker</a>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="dash-card panel"><span class="sprite">🪴</span><span class="big" id="dash-plants">0</span>Plants Logged</div>
+        <div class="dash-card panel"><span class="sprite">📓</span><span class="big" id="dash-entries">0</span>Journal Entries</div>
+        <div class="dash-card panel"><span class="sprite">💡</span><span class="big" id="dash-tips">0</span>Tips Collected</div>
+        <div class="dash-card panel"><span class="sprite">😈</span><span class="big" id="dash-memes">0</span>Garden Memes</div>
+      </div>
+    </section>
+
+    <!-- ===================== JOURNAL ===================== -->
+    <section id="view-journal" class="view">
+      <div class="section-head"><span class="sprite">📓</span><h2>Garden Journal</h2></div>
+      <p class="lede">The personal, funny, occasionally painful log of my gardening journey. Wins, Ls, and lessons learned the hard way.</p>
+      <div id="journal-list"></div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section id="view-gallery" class="view">
+      <div class="section-head"><span class="sprite">🖼️</span><h2>Plant Gallery</h2></div>
+      <p class="lede">Every plant, labelled and sorted. Tap a photo to enlarge. Filter by type below.</p>
+      <div class="filters" id="gallery-filters"></div>
+      <div class="grid" id="gallery-grid"></div>
+    </section>
+
+    <!-- ===================== TIMELINES ===================== -->
+    <section id="view-timelines" class="view">
+      <div class="section-head"><span class="sprite">📈</span><h2>Growth Timelines</h2></div>
+      <p class="lede">Plant evolution screens — watch each plant level up from seed to harvest. 🟢 done · 🔴 now · 🟡 coming up.</p>
+      <div id="timeline-list"></div>
+    </section>
+
+    <!-- ===================== TIPS ===================== -->
+    <section id="view-tips" class="view">
+      <div class="section-head"><span class="sprite">💡</span><h2>Garden Tips I Learned the Hard Way</h2></div>
+      <div class="mascot-tip panel">
+        <img class="mascot small" src="mascot.svg" alt="Mascot">
+        <div class="bubble"><span id="mascot-line">Loading sarcastic wisdom…</span></div>
+      </div>
+      <p class="lede">Beginner-friendly, no-nonsense gardening tips. Simple, practical, and earned through dead plants.</p>
+      <div class="tip-grid" id="tips-grid"></div>
+    </section>
+
+    <!-- ===================== MEMES ===================== -->
+    <section id="view-memes" class="view">
+      <div class="section-head"><span class="sprite">😈</span><h2>Meme Garden Corner</h2></div>
+      <p class="lede">Original garden-themed Trollface-farmer energy. 100% relatable plant suffering.</p>
+      <div class="meme-grid" id="meme-grid"></div>
+    </section>
+
+    <!-- ===================== MAP ===================== -->
+    <section id="view-map" class="view">
+      <div class="section-head"><span class="sprite">🗺️</span><h2>Interactive Pixel Garden Map</h2></div>
+      <p class="lede">Click a plot to explore that corner of the garden. Welcome to the overworld.</p>
+      <div class="map-wrap panel">
+        <div class="garden-map" id="garden-map"></div>
+      </div>
+    </section>
+
+    <!-- ===================== SEASONS ===================== -->
+    <section id="view-seasons" class="view">
+      <div class="section-head"><span class="sprite">🍂</span><h2>Seasonal Archive</h2></div>
+      <p class="lede">The year, sorted by season. Photos, progress, recaps, and regrets.</p>
+      <div class="season-tabs" id="season-tabs"></div>
+      <div class="season-panel panel" id="season-panel"></div>
+    </section>
+
+    <!-- ===================== HARVEST ===================== -->
+    <section id="view-harvest" class="view">
+      <div class="section-head"><span class="sprite">📊</span><h2>Harvest Tracker</h2></div>
+      <p class="lede">The retro stats screen. Current run, current boss battle.</p>
+      <div class="stats-screen">
+        <h3>★ GARDEN STATS ★</h3>
+        <div id="stats-list"></div>
+        <div class="hp-wrap">
+          <div class="hp-label">SEASON HP vs Heat Stress</div>
+          <div class="hp-bar"><div class="hp-fill"></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div id="lightbox">
+    <button class="btn small lb-close">✕ Close</button>
+    <div class="lb-inner">
+      <img id="lb-img" src="" alt="">
+      <p class="lb-cap" id="lb-cap"></p>
+    </div>
+  </div>
+
+  <!-- floating pixel bugs -->
+  <span class="bug">🐝</span>
+  <span class="bug b2">🦋</span>
+  <span class="bug b3">🐞</span>
+
+  <footer>
+    <p>🌱 <strong>TrollRunner Garden Log</strong> — a cozy corner of <a href="https://trollrunner.net">TrollRunner.net</a> · Grown with dirt, sun &amp; questionable decisions.</p>
+    <p style="font-size:15px;opacity:.85">Seed to harvest · Spring 2026 →</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
