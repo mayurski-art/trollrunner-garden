@@ -200,18 +200,20 @@ const TIPS = [
   { topic: "Harvesting",    ico: "🧺", title: "Pick to keep picking", body: "Many plants (herbs, beans, peppers) produce MORE the more you harvest. Regular picking tells the plant to keep going." }
 ];
 
-/* ---- 5. MEME GARDEN CORNER --------------------------------- */
+/* ---- 5. MEME GARDEN CORNER ---------------------------------
+   `face` maps to a pixel trollface in /faces (troll-<face>.svg):
+   classic · cool · lol · dead · cry · money                         */
 const MEMES = [
-  { cat: "Sprout memes",   face: "😈", cap: "When the seed finally sprouts after 3 weeks of you assuming it was dead." },
-  { cat: "Beginner memes", face: "😏", cap: "Me checking the garden 14 times a day like the plants moved." },
-  { cat: "Harvest memes",  face: "😈", cap: "One tomato grows and now I'm basically a fourth-generation farmer." },
-  { cat: "Plant drama",    face: "🥲", cap: "When you overwater ONCE and the plant acts like you betrayed the bloodline." },
-  { cat: "Plant drama",    face: "😵", cap: "When the basil starts wilting for absolutely no reason and refuses to explain itself." },
-  { cat: "Pest memes",     face: "⚔️", cap: "Me fighting aphids like it's the final boss of the season." },
-  { cat: "Beginner memes", face: "😎", cap: "When the plant survives even though I had no idea what I was doing." },
-  { cat: "Plant drama",    face: "🙃", cap: "That one plant that grows better the more I completely ignore it." },
-  { cat: "Watering memes", face: "💧", cap: "'Just water it when the soil is dry' — me, staring at the soil, unable to read its emotions." },
-  { cat: "Harvest memes",  face: "🤑", cap: "Spent $80 on supplies to grow $4 of tomatoes. Worth it." }
+  { cat: "Sprout memes",   face: "classic", cap: "When the seed finally sprouts after 3 weeks of you assuming it was dead." },
+  { cat: "Beginner memes", face: "cool",    cap: "Me checking the garden 14 times a day like the plants moved." },
+  { cat: "Harvest memes",  face: "money",   cap: "One tomato grows and now I'm basically a fourth-generation farmer." },
+  { cat: "Plant drama",    face: "cry",     cap: "When you overwater ONCE and the plant acts like you betrayed the bloodline." },
+  { cat: "Plant drama",    face: "dead",    cap: "When the basil starts wilting for absolutely no reason and refuses to explain itself." },
+  { cat: "Pest memes",     face: "classic", cap: "Me fighting aphids like it's the final boss of the season." },
+  { cat: "Beginner memes", face: "cool",    cap: "When the plant survives even though I had no idea what I was doing." },
+  { cat: "Plant drama",    face: "lol",     cap: "That one plant that grows better the more I completely ignore it." },
+  { cat: "Watering memes", face: "classic", cap: "'Just water it when the soil is dry' — me, staring at the soil, unable to read its emotions." },
+  { cat: "Harvest memes",  face: "money",   cap: "Spent $80 on supplies to grow $4 of tomatoes. Worth it." }
 ];
 
 /* sarcastic one-liners the mascot rotates through */
@@ -368,7 +370,10 @@ function renderTips() {
 function renderMemes() {
   $("#meme-grid").innerHTML = MEMES.map(m => `
     <figure class="meme panel">
-      <div class="pic"><span class="face">${m.face}</span><span class="cat">${esc(m.cat)}</span></div>
+      <div class="pic">
+        <img class="troll" loading="lazy" src="faces/troll-${esc(m.face)}.svg" alt="Trollface">
+        <span class="cat">${esc(m.cat)}</span>
+      </div>
       <figcaption class="meme-cap">"${esc(m.cap)}"</figcaption>
     </figure>`).join("");
 }

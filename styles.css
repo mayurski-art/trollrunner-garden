@@ -20,6 +20,8 @@
   --pink:         #e84d8a;
   --shadow:       #00000033;
   --panel:        #fffdf3;
+  /* classic 2014 meme caption font */
+  --impact: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Black', system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -53,6 +55,14 @@ h1, h2, h3, h4, .pixel { font-family: 'Press Start 2P', monospace; }
 a { color: var(--green-deep); }
 
 img { image-rendering: auto; }
+
+/* faint old-web CRT scanlines over everything (under start screen + lightbox) */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: 600; pointer-events: none;
+  background: repeating-linear-gradient(0deg, #00000012 0 1px, #00000000 1px 3px);
+  opacity: .35;
+}
 
 /* ---------- pixel panel / card shared look ---------- */
 .panel {
@@ -170,6 +180,7 @@ img { image-rendering: auto; }
    ============================================================ */
 .mascot {
   width: 120px; height: 120px;
+  image-rendering: pixelated;
   animation: bob 1.8s ease-in-out infinite;
   filter: drop-shadow(0 6px 0 #00000022);
 }
@@ -245,6 +256,15 @@ main { max-width: 1080px; margin: 0 auto; padding: 24px 16px 80px; }
   color: var(--cream);
   text-shadow: 3px 3px 0 var(--green-deep), 6px 6px 0 #00000033;
   margin: 8px 0 14px;
+}
+.hero::after {  /* cheeky trollface-era stamp */
+  content: "PROBLEM?";
+  position: absolute; right: 12px; bottom: 10px; z-index: 3;
+  font-family: var(--impact); font-size: clamp(14px, 2.4vw, 22px);
+  letter-spacing: 1px; color: #fff;
+  background: var(--pink); border: 3px solid var(--ink);
+  padding: 3px 12px 4px; transform: rotate(-7deg);
+  box-shadow: 3px 3px 0 var(--ink);
 }
 .hero .tag {
   max-width: 680px; margin: 0 auto 18px;
@@ -336,20 +356,33 @@ main { max-width: 1080px; margin: 0 auto; padding: 24px 16px 80px; }
 }
 .tip-body { margin: 6px 0 0; }
 
-/* ---------- MEMES ---------- */
+/* ---------- MEMES (2014 rage-comic / MS-Paint look) ---------- */
 .meme-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); }
-.meme { padding: 0; overflow: hidden; text-align:center; }
+.meme { padding: 0; overflow: hidden; text-align:center; background: #fff; }
 .meme .pic {
-  background: repeating-linear-gradient(45deg, #d7f0b0 0 12px, #c9e89a 12px 24px);
-  padding: 18px 10px; display:flex; align-items:center; justify-content:center; flex-direction: column; gap: 6px;
+  /* crude MS-Paint white canvas the troll is "drawn" on */
+  background:
+    radial-gradient(circle at 50% 42%, #ffffff 0 58%, #efeee6 100%);
+  padding: 16px 10px 12px;
+  display:flex; align-items:center; justify-content:center; flex-direction: column; gap: 8px;
+  position: relative;
 }
-.meme .pic .face { font-size: 54px; line-height: 1; }
+.troll {
+  width: 104px; height: 104px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 4px 0 #0000001a);
+  transition: transform .14s ease;
+}
+.meme:hover .troll { transform: rotate(-3deg) scale(1.07); }
 .meme .pic .cat {
   font-family:'Press Start 2P',monospace; font-size:7px; color: var(--green-deep);
 }
 .meme .meme-cap {
-  padding: 12px 12px 14px; margin:0; font-size: 19px; background: var(--cream);
-  border-top: 3px solid var(--ink);
+  padding: 13px 12px 16px; margin:0;
+  font-family: var(--impact);
+  font-size: 20px; line-height: 1.12; letter-spacing: .5px; text-transform: uppercase;
+  color: #111; background: #fff; border-top: 3px solid var(--ink);
+  -webkit-text-stroke: .35px #00000022;
 }
 
 .mascot-tip {
