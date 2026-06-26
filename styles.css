@@ -147,33 +147,25 @@ body::after {
   animation: blink 1.1s steps(2) infinite;
 }
 
-/* clouds + sun on start screen and hero */
+/* pixel-art clouds + sun + floating troll on start screen and hero */
 .sky-deco { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.sky-deco img { position: absolute; image-rendering: pixelated; display: block; }
 .sun {
-  position: absolute; top: 6%; right: 8%;
-  width: 76px; height: 76px;
-  background: var(--yellow);
-  border: 4px solid var(--ink);
-  border-radius: 50%;
-  box-shadow: 0 0 0 6px #ffd23f55, 0 0 32px 10px #ffd23f88;
-  animation: pulse 3s ease-in-out infinite;
+  top: 5%; right: 7%;
+  width: 96px; height: 96px;
+  filter: drop-shadow(0 0 16px #ffd23f99);
+  animation: pulse 3.4s ease-in-out infinite;
 }
-.cloud {
-  position: absolute;
-  width: 90px; height: 26px;
-  background: #fff;
-  border: 4px solid var(--ink);
-  border-radius: 16px;
-  opacity: .9;
+.cloud { width: 124px; height: auto; opacity: .96; }
+.cloud.c1 { top: 13%; left: -150px; animation: drift 30s linear infinite; }
+.cloud.c2 { top: 27%; left: -150px; width: 92px;  animation: drift 41s linear infinite 5s; }
+.cloud.c3 { top: 8%;  left: -150px; width: 150px; animation: drift 52s linear infinite 12s; }
+.troll-float {
+  top: 17%; left: 7%;
+  width: 60px; height: auto; opacity: .92;
+  filter: drop-shadow(0 5px 0 #00000018);
+  animation: bob 3.2s ease-in-out infinite;
 }
-.cloud::before, .cloud::after {
-  content:""; position:absolute; background:#fff; border:4px solid var(--ink); border-radius:50%;
-}
-.cloud::before { width: 34px; height: 34px; top: -22px; left: 12px; }
-.cloud::after  { width: 26px; height: 26px; top: -16px; left: 46px; }
-.cloud.c1 { top: 14%; left: -120px; animation: drift 26s linear infinite; }
-.cloud.c2 { top: 24%; left: -120px; transform: scale(.7); animation: drift 38s linear infinite 4s; }
-.cloud.c3 { top: 9%;  left: -120px; transform: scale(1.2); animation: drift 46s linear infinite 10s; }
 
 /* ============================================================
    MASCOT — pixel troll farmer
